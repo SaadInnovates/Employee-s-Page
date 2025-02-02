@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+:root{
+    --FF:"Nunito",sans-serif;
+    --FS:1.5rem;
+    --BC:#475569;
+    --BACKGROUND_GRADIENT:radial-gradient(whitesmoke,var(--BC));
+    --DARK_COLOR:black;
+    --ALT_BACK_COLOR:#1e293b;
+    --IMG_DISPLAY:block;
+    --MAIN_PADDING:1rem;
+    --NAV_PADDING:0.5rem;
+    --MAIN_GAP:1.5rem;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(1.01);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.03);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes moving {
+    0% {
+        transform: translateX(-100%) rotate(-45deg) scale(1);
+        opacity: 0;
+    }
+    33% {
+        transform: translateX(25%) rotate(0deg) scale(1.05);
+        opacity: 0.5;
+    }
+    55% {
+        transform: translateX(0) rotate(0deg) scale(1.1);
+        opacity: 0.75;
+    }
+    100% {
+        transform: translateX(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+.card:hover{
+    transform: scale(1.1,1.1);
+    transition: transform 2s ease 1s;
+    border-color: red;
+}
+.card:target{
+    border-color:rgb(255, 81, 0);
+}
+.nowrap{
+    white-space: nowrap;
+}
+img{
+    display: var(--IMG_DISPLAY);
+    max-width: 100%;
+    height: auto;
+}
+body{
+    font:var(--FS) var(--FF);
+    background-color: var(--BC);
+    background-image: var(--BACKGROUND_GRADIENT);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+html{
+    scroll-behavior: smooth;
+}
+header,footer{
+    position:sticky;
+    background-color: var(--ALT_BACK_COLOR);
+    color:whitesmoke;
+    text-align: center;
+}
+header{
+    top: 0;
+    z-index: 1000;
+}
+footer{
+    bottom: 0;
+    z-index: 1000;
+
+}
+nav{
+    background-color: white;
+    padding: var(--NAV_PADDING);
+    border-bottom: 2px solid var(--DARK_COLOR);
+    font-weight: bolder;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+main{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--MAIN_PADDING);
+    gap: var(--MAIN_GAP);
+}
+nav a:any-link{
+    color:var(--DARK_COLOR);
+    padding:1rem;
+
+}
+
+nav :is(a:hover,a:focus){
+    color:hsla(0,0%,20%,0.6);
+}
+
+.card{
+    scroll-margin-top: 8rem;
+    width:500px;
+    background-color: #cbd5e1;
+    border: 2px solid var(--DARK_COLOR);
+    border-radius: 15px;
+    padding:1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px; 
+    animation: moving 2s ease-in-out 1;
+}
+
+
+.card figure{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.card img{
+    border:5px double #333;
+    border-radius: 50%;
+    height: auto;
+    width: 250px; 
+    height: 250px; 
+    object-fit: cover; 
+}
+.card img:not([alt]){
+    border:10px solid red;
+}
+.card figcaption{
+    font-size: 2rem;
+    font-weight: bolder;
+    text-align: center;
+    margin: 1rem;
+}
+.card figcaption::first-letter{
+    font-size: 3rem;
+}
+.card figcaption::after{
+
+    content:"✨";
+    display: block;
+}
+@media screen and (min-width:576px){
+    main{
+        justify-content: center;
+        flex-flow: row-wrap;
+        padding:1rem;
+    }
+    .card{
+        width: min(100%,400px);
+    }
+    
+}
+@media screen and (min-width:768px){
+    
+    .card{
+        width: min(100%,400px);
+    }
+    .card figure{
+        flex-flow: column reverse;
+    }
+    .card figcaption{
+        margin:0.1rem 0;
+    }
+    .card p{
+        margin-top: 1rem;
+    }
+    
+   
+}
+@media screen and (min-width:1200px){
+    main{
+        flex-direction: row;
+    }
+    nav{
+        display: none;
+    }
+    
+    
+}
